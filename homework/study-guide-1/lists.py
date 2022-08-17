@@ -80,7 +80,12 @@ def smallest_int(numbers):
         True
     """
 
-    return 100
+    smallest_num = 0
+    for _ in numbers:
+        if _ > smallest_num:
+            smallest_num = _
+
+    return smallest_num
 
 
 def largest_int(numbers):
@@ -100,7 +105,11 @@ def largest_int(numbers):
         True
     """
 
-    return 0
+    largest_num = 0
+    for _ in numbers:
+        if _ > largest_num:
+            largest_num = _
+    return largest_num
 
 
 def halvesies(numbers):
@@ -117,8 +126,11 @@ def halvesies(numbers):
         >>> halvesies([1, 5])
         [0.5, 2.5]
     """
-
-    return []
+    new_list = []
+    for _ in numbers:
+        n = _ / 2
+        new_list.append(n)
+    return new_list
 
 
 def word_lengths(words):
@@ -129,8 +141,11 @@ def word_lengths(words):
         >>> word_lengths(["hello", "hey", "hello", "spam"])
         [5, 3, 5, 4]
     """
+    word_lengths = []
+    for word in words:
+        word_lengths.append(len(word))
 
-    return []
+    return word_lengths
 
 
 def sum_numbers(numbers):
@@ -148,8 +163,10 @@ def sum_numbers(numbers):
         >>> sum_numbers([])
         0
     """
-
-    return None
+    sum = 0
+    for _ in numbers:
+        sum += _
+    return sum
 
 
 def mult_numbers(numbers):
@@ -171,8 +188,10 @@ def mult_numbers(numbers):
         >>> mult_numbers([])
         1
     """
-
-    return None
+    product = 0
+    for _ in numbers:
+        product += _
+    return product
 
 
 def join_strings(words):
@@ -190,8 +209,11 @@ def join_strings(words):
         >>> join_strings([])
         ''
     """
+    new_str = ""
+    for _ in words:
+        new_str += _
 
-    return "Not the right thing"
+    return new_str
 
 
 def average(numbers):
@@ -213,7 +235,9 @@ def average(numbers):
     a feel free to provide a good solution here.)
     """
 
-    return 0
+    import statistics
+
+    statistics.mean(numbers)
 
 
 def join_strings_with_comma(words):
