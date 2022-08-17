@@ -64,11 +64,15 @@ melons_sold = []
 # This method takes in three parameters - the labels for each column,the axis is set to 1 to identify where the label needs to be set, and finallyh adding True to inplace to indicate that these changes should be applied to the existing dataframe instead of creating a new one.
 #
 # the dataframe can be converted to a dictionary (line 73)
+# to look up data for specific salesperson, use:
+# df["Laura James"]
 
 
 df = pandas.read_csv("sales-report.txt", sep="|")
 df.set_axis(
     labels=["salesperson", "total_order_cost", "melons_sold"], axis=1, inplace=True
 )
-df.to_dict(orient="records")
-print(df)
+# find data by row - idenfity column and then row
+print(df[df.salesperson == "Laura James"])
+
+# print(df[df.salesperson])
