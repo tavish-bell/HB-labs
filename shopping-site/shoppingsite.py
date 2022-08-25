@@ -6,15 +6,15 @@ put melons in a shopping cart.
 Authors: Joel Burton, Christian Fernandez, Meggie Mahnken, Katie Byers.
 """
 
-from flask import Flask, render_template, redirect, flash
 import jinja2
+from flask import Flask, flash, redirect, render_template
 
 import melons
 
 app = Flask(__name__)
 
 # A secret key is needed to use Flask sessioning features
-app.secret_key = 'this-should-be-something-unguessable'
+app.secret_key = "this-should-be-something-unguessable"
 
 # Normally, if you refer to an undefined variable in a Jinja template,
 # Jinja silently ignores this. This makes debugging difficult, so we'll
@@ -24,7 +24,7 @@ app.jinja_env.undefined = jinja2.StrictUndefined
 
 # This configuration option makes the Flask interactive debugger
 # more useful (you should remove this line in production though)
-app.config['PRESERVE_CONTEXT_ON_EXCEPTION'] = True
+app.config["PRESERVE_CONTEXT_ON_EXCEPTION"] = True
 
 
 @app.route("/")
@@ -38,11 +38,12 @@ def index():
 def list_melons():
     """Return page showing all the melons ubermelon has to offer"""
 
+    # create var melon_list and assign to the get_all()function on melons.py
     melon_list = melons.get_all()
-    return render_template("all_melons.html",
-                           melon_list=melon_list)
+    return render_template("all_melons.html", melon_list=melon_list)
 
 
+# this is called a view function
 @app.route("/melon/<melon_id>")
 def show_melon(melon_id):
     """Return page showing the details of a given melon.
@@ -50,10 +51,9 @@ def show_melon(melon_id):
     Show all info about a melon. Also, provide a button to buy that melon.
     """
 
-    melon = melons.get_by_id("meli")
+    melon = melons.get_by_id(melon_id)
     print(melon)
-    return render_template("melon_details.html",
-                           display_melon=melon)
+    return render_template("melon_details.html", display_melon=melon)
 
 
 @app.route("/cart")

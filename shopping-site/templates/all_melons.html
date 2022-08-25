@@ -4,6 +4,8 @@
     <h2>Top Selling Melons</h2>
 
     <div id="melon-list" class="row">
+        <!-- iterating through each melon in the melon_list,
+        creeating a card for each melon that displays the name of the melon and it's image (this information is retrieved from the Melon class created in melons.py). Iterating through this list and tapping into Class attributes and methods means that the links are generated dynamically which creates more efficient code and removes the need to create a static link for each different type of melon. -->
       {% for melon in melon_list %}
           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 melon-summary mt-3">
 
@@ -14,6 +16,8 @@
                 <div class="card-body">
                     <h5 class="card-title"><a href="/melon/{{ melon.melon_id }}">{{ melon.common_name }}</a></h5>
                     <div class="price card-text">{{ melon.price_str() }}</div>
+
+                    <!-- Details button -->
                     <a class="btn btn-primary" href="/melon/{{ melon.melon_id }}">Details</a>
                 </div>
               </div>
